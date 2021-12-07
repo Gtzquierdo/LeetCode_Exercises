@@ -12,11 +12,23 @@
  */
 var twoSum = function(nums, target) {
     // Brute Force
+    // Space - 0(1)
+    // Time - 0(n^2)
+    // for (let i = 0; i < nums.length; i++) {
+    //     for (let j = i + 1; j < nums.length; j++) {
+    //         if (nums[i] + nums[j] === target) {
+    //             return [i, j];
+    //         }
+    //     }
+    // }
+
+    let map = new Map();
     for (let i = 0; i < nums.length; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) {
-                return [i, j];
-            }
+        let num1 = nums[i];
+        let num2 = target - num1;
+        if (map.has(num2)) {
+            return [i, map.get(num2)];
         }
+        map.set(num1, i);
     }
 };
